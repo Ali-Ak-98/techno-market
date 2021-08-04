@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import {Rate} from 'rsuite';
 import 'rsuite/dist/styles/rsuite-default.css'
+import Image from 'next/image'
 
 export default function Home() {
     const [data, setData] = useState('');
@@ -77,7 +78,7 @@ export default function Home() {
                     <div
                         className="col-12 bg-white shadow d-flex flex-column justify-content-center align-items-center p-2">
                         <div className="logo shadow p-2 bg-white">
-                            <img src='/images/logo.png' alt="logo"/>
+                            <Image src='/images/logo.png' alt="logo" width="100%" height="100%"/>
                         </div>
                         <div className="title my-2">
                             <h1 className="h3">Techno Market</h1>
@@ -95,10 +96,10 @@ export default function Home() {
                 </div>
                 <div className="row items my-3 g-3">
                     {(data && data.products.length) && data.products.map(e => {
-                        return <div className="col-12 col-lg-3 col-sm-4">
+                        return <div className="col-12 col-lg-3 col-sm-4" key={e.id}>
                             <div
                                 className="item bg-white shadow d-flex flex-column justify-content-between align-items-center p-2">
-                                <img src={e.image} alt="image" className="mb-2"/>
+                                <img src={e.image} alt="image" className="mb-2" width="100%" height="100%"/>
                                 <span className="text-center">{e.name}</span>
                                 <span>$ <span className="text-danger">{e.price}</span></span>
                                 <div className="counter rounded border border-1 row my-2">
@@ -132,7 +133,7 @@ export default function Home() {
                 </div>
                 <div className="col-4 text-center cart">
                     <div className="count">{cart.length}</div>
-                    <img src="/images/cart.png" alt="cart" className="ml-2" width={25} height={25}/>
+                    <Image src="/images/cart.png" alt="cart" className="ml-2" width={25} height={25}/>
                 </div>
             </footer>
         </div>
